@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Boxes Layout</title>
+    <style>
+        body {
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #2f3e47;
+        }
+
+        section {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* justify-content: space-between; */
+            gap: 5px;
+            width: 400px;
+            height: 200px;
+            border: 2px solid #ccc;
+            padding: 5px;
+        }
+
+        .box {
+            width: 75px;
+            height: 50px;
+        }
+
+
+        .line {
+            height: 6px;
+            width: 400px;
+            background-color: #ccc;
+
+            margin: 0 5px;
+        }
+
+        .midcontainer {
+            display: flex;
+            gap: 5px;
+        }
+
+        .box-top {
+            position: relative;
+            margin-left: 0;
+            margin-right: auto;
+        }
+
+        .box-bottom {
+            position: relative;
+            margin-left: auto;
+            margin-right: 0;
+        }
+        .green {
+            background-color: green;
+        }
+
+        .blue {
+            background-color: blue;
+        }
+
+        .yellow {
+            background-color: yellow;
+        }
+
+        .pink {
+            background-color: #f5c6c6;
+        }
+
+        .purple {
+            background-color: #f2a3c9;
+        }
+
+        .red {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section>
+        <div class="box t1 box-top red"></div>
+        <div class="line"></div>
+        <div class="midcontainer">
+            <div class="box t2 blue "></div>
+            <div class="box t3 green "></div>
+            <div class="box t4 yellow"></div>
+            <div class="box t5 purple"></div>
+        </div>
+        <div class="line"></div>
+        <div class="box t6 box-bottom pink"></div>
+        <div class="midcontainer">
+            <button id="startButton">Start</button>
+        <button id="stopButton">Stop</button>
+        </div>
+        
+    </section>
+    <script src="./jquery-3.7.1.min.js"></script>
+    <script>
+        let colors = ["red", "blue", "green", "yellow", "purple", "pink"];
+        let index = 0;
+        let intervalId;
+
+        $('#startButton').click(() => {
+            intervalId = setInterval(() => {
+                let tempColor = colors.pop();
+                colors.unshift(tempColor);
+                $(".t1").css("background-color", colors[0]);
+                $(".t2").css("background-color", colors[1]);
+                $(".t3").css("background-color", colors[2]);
+                $(".t4").css("background-color", colors[3]);
+                $(".t5").css("background-color", colors[4]);
+                $(".t6").css("background-color", colors[5]);
+            }, 1000);
+        });
+
+        $('#stopButton').click(() => {
+            clearInterval(intervalId);
+        });
+    </script>
+
+</body>
+
+</html>

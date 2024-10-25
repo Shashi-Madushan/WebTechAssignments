@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        section{
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+        }
+        div{
+            border: 1px solid black;
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    
+    <section>
+        <div>
+            <h1 class="t1">B</h1>
+        </div>
+        <div>
+            <h1 class="t2">C</h1>
+        </div>
+        <div>
+            <h1 class="t3">D</h1>
+        </div>
+        <div>
+            <h1 class="t4">E</h1>
+        </div>
+        <div>
+            <h1 class="t5">F</h1>
+        </div>
+        <div>
+            <h1 class="t6">A</h1>
+        </div>
+    </section>
+   
+    <script>
+        let arr = ["A","B","C","D","E","F"];
+        setInterval(() => {
+            let temp = arr.pop();
+            arr.unshift(temp);
+            console.log(arr);
+            
+            document.querySelector(".t1").textContent = arr[0];
+            document.querySelector(".t2").textContent = arr[1];
+            document.querySelector(".t3").textContent = arr[2];
+            document.querySelector(".t4").textContent = arr[3];
+            document.querySelector(".t5").textContent = arr[4];
+            document.querySelector(".t6").textContent = arr[5];
+        }, 3000);
+    </script>
+</body>
+</html>
