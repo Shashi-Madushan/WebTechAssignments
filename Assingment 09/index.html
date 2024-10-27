@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Boxes Layout</title>
+    <style>
+        body {
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #2f3e47;
+        }
+
+        section {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* justify-content: space-between; */
+            gap: 5px;
+            width: fit-content;
+            height: 200px;
+            border: 2px solid #ccc;
+            padding: 5px;
+        }
+
+        .box {
+            width: 75px;
+            height: 50px;
+        }
+
+
+        .line {
+            height: 2px;
+            width: 500px;
+            background-color: #ccc;
+
+            margin: 0 5px;
+        }
+
+        .midcontainer {
+            display: flex;
+            gap: 5px;
+        }
+
+        .gray {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section>
+
+        <div class="line"></div>
+        <div class="midcontainer">
+            <div class="box t1  gray"></div>
+            <div class="box t2 gray "></div>
+            <div class="box t3 gray "></div>
+            <div class="box t4 gray"></div>
+            <div class="box t5 gray"></div>
+            <div class="box t6  gray"></div>
+        </div>
+        <div class="line"></div>
+
+        <div class="midcontainer">
+            <button id="startButton">Start</button>
+            <button id="stopButton">Stop</button>
+        </div>
+
+    </section>
+    <script src="../Assignment 08/que02/jquery-3.7.1.min.js"></script>
+    <script>
+        const lightcount = 6;
+        let curr_light = -1;
+        let direction = "RIGHT";
+        updateLight = () => {
+            if (direction === "RIGHT") {
+                curr_light ++; 
+                $('.box').css('background', 'gray');
+                $('.box').eq(curr_light+1).css("background", "white");
+                $('.box').eq(curr_light).css("background", "red");
+                if(curr_light === lightcount){
+                    direction ="LEFT"
+                }
+            }else{
+                curr_light --; 
+                $('.box').css('background', 'gray');
+                $('.box').eq(curr_light-1).css("background", "white");
+                $('.box').eq(curr_light).css("background", "red");  
+                if(curr_light === 0){
+                    direction ="RIGHT"
+                }
+            }
+
+
+        }
+        setInterval(updateLight, 100);
+
+    </script>
+</body>
+
+</html>
